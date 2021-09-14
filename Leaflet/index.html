@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="mapid"></div>
+
+    <input class="txtInput" id="Lat" placeholder="Latitud"/>
+    <input class="txtInput" id="Long" placeholder="Longitud"/>
+    <a class="btn btn-white btn-big" id="btnAdd">Agregar</a>
+    <script>
+      var mymap = L.map("mapid").setView(
+        [21.15223412617155, -101.7113883047542],
+        4
+      );
+
+      L.tileLayer(
+        "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
+        {
+          attribution:
+            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: "mapbox/streets-v11",
+          tileSize: 512,
+          zoomOffset: -1,
+        }
+      ).addTo(mymap);
+      var salle = L.marker([21.15223412617155, -101.7113883047542]).addTo(
+        mymap
+      );
+      var TSM = L.marker([25.651632583733686, -100.28894991685226]).addTo(
+        mymap
+      );
+
+      var ECIJG = L.marker([4.782822211312334, -74.0414846752721]).addTo(mymap);
+
+      L.polygon([
+        [21.15223412617155, -101.711388304752],
+        [28.067169188445153, -80.62348334271738],
+        [4.782822211312334, -74.0414846752721],
+      ]).addTo(mymap).bindPopup("Triangulo de las bermudas xdd");
+
+      var circulo = L.circle([21.15223412617155, -101.7113883047542],{
+        color: "red",
+        fillColor:"#f03",
+        fillOpacity: 0.5,
+        radius: 100000
+      }).addTo(mymap).bindPopup("Lugar de las Fieras");
+
+
+      $("#btnAdd").on('click', function() {
+        var Lat = $('#Lat').val();
+        var Long = $('#Long').val();
+
+       let newVal = L.marker([Lat,Long]).addTo(mymap).bindPopup("Arriba las Fieras");
+      });
+
+    </script>
+  </body>
+</html>
