@@ -1,0 +1,23 @@
+<p>listado works!</p>
+
+<ul>
+  <li *ngFor="let pokemon of pokemones; let i = index">
+    {{i + 1}} - {{pokemon.nombre}}
+  </li>
+</ul>
+
+<button (click)="borrarPokemon()">Borrar</button>
+
+<div *ngIf = "pokemonEliminado; else noBorrado"> <!--Esto es como intucion de angular, mientras no haya eliminado algo (no tiene valor), no tiene porque mostrarlo-->
+  <h2>
+    Color de pelo borrado: <small>{{ pokemonEliminado.color}}</small>
+  </h2>
+</div>
+
+<!--Ng teplate permite ejecutar ciertos codigos cuando se cumple o no alguna condicion-->
+
+<ng-template #noBorrado>
+<!--noBorrado es una referencia local-->
+<h3>No se ha borrado ninguna fase</h3>
+</ng-template>
+

@@ -1,0 +1,15 @@
+<h1>{{ title }}</h1> <!--Todo lo de aqui lo podemos usar en los componentes-->
+<h2>{{5+5}}</h2>
+
+<!--<h3>{{if 3 < 2}}</h3> -Se puede ejecutar JS-->
+
+<!--Vamos a manipular esa propiedad "numero"-->
+
+<!--<button (click)= "numero = numero -1">-1</button>  poenmos la funcionaildad en el click -->
+<span>{{numero}}</span>
+<button (click)= "aux = numero; numero = b; b = aux + numero">Sig numero</button>
+
+
+<button (click)= "acumular(-base)">Restar</button>
+<button (click)= "acumular(base)">Sumar</button>
+<h3>Base: {{ base }}</h3>
